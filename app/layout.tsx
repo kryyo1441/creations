@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 })
 export const metadata: Metadata = {
   title: "Creations",
-  description: "a platform to share your creations",
+  description: "Discover creativity and showcase your programming projects to the world.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import { ArrowBigRightIcon, SparkleIcon } from "lucide-react";
 
 const LiveBadge = () => {
   return(
@@ -25,8 +26,8 @@ export default function Hero() {
             Showcase your programming creations, discover others’ work, and let the community decide with likes and dislikes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-12 ">
-            <Button asChild size="lg" className="text-base px-8 shadow-lg"><Link href="/projects">Share your projects</Link></Button>
-            <Button asChild size="lg" className="text-base px-8 shadow-lg"><Link href="/explore">Explore other projects</Link></Button>  
+            <Button asChild size="lg" className="text-base px-8 shadow-lg"><Link href="/projects"><SparkleIcon className="size-5"></SparkleIcon><span>Share your projects</span></Link></Button>
+            <Button asChild size="lg" className="text-base px-8 shadow-lg" variant="secondary"><Link href="/explore"><span>Explore other projects</span><ArrowBigRightIcon className="size-5"></ArrowBigRightIcon></Link></Button>  
           </div>
           
           
