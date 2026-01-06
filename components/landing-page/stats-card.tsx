@@ -1,3 +1,24 @@
-export default function StatsCard() {
+import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
+
+export default function StatsCard({
+  icon : Icon,
+  value,
+  label,
+  hasBorder
+}: {
+  icon:LucideIcon
+  value:string
+  label:string
+  hasBorder?:boolean
+}
+) { 
   return (
-    <div className="p-6 bg-card rounded-lg shadow-md border border-border"></ 
+     <div className={cn("space-y-2", hasBorder && "border-x border-border/50")}><div className="flex items-center justify-center gap-2">
+      <Icon className="size-5 text-primary"></Icon>
+      <p className="text-3xl sm:text:4xl font-bold">{value}</p>
+      <p className="text-sm text-muted-foreground">{label}</p>
+    
+      </div></div>
+  );
+}

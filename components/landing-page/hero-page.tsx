@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { ArrowBigRightIcon, SparkleIcon } from "lucide-react";
+import { ArrowBigRightIcon, EyeIcon, RocketIcon, SparkleIcon, UserIcon } from "lucide-react";
+import StatsCard from "./stats-card";
 
 const LiveBadge = () => {
   return(
@@ -14,6 +15,25 @@ const LiveBadge = () => {
       </Badge>
   )
 }
+
+const statsData = [
+  {
+    icon: RocketIcon,
+    value:"4.5K+",
+    label:"Creations Shared"
+  },
+  {
+    icon: UserIcon,
+    value:"20K+",
+    label:"Creators",
+    hasBorder:true
+  },
+  {
+    icon: EyeIcon,
+    value:"100k+",
+    label:"Regular Visitors"
+  }
+]
 
 export default function Hero() {
   return (
@@ -28,6 +48,14 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 mb-12 ">
             <Button asChild size="lg" className="text-base px-8 shadow-lg"><Link href="/projects"><SparkleIcon className="size-5"></SparkleIcon><span>Share your projects</span></Link></Button>
             <Button asChild size="lg" className="text-base px-8 shadow-lg" variant="secondary"><Link href="/explore"><span>Explore other projects</span><ArrowBigRightIcon className="size-5"></ArrowBigRightIcon></Link></Button>  
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-2xl w-full">
+          {
+            statsData.map((stat) => (
+              <StatsCard key={stat.label} {...stat} />
+            ))
+          }
           </div>
           
           
