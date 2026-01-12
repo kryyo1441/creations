@@ -3,6 +3,7 @@ import Link from "next/link";
 import SectionHeader from "../common/section-header";
 import { Button } from "../ui/button";
 import Product from "@/app/products/page";
+import ProductCard from '@/components/products/product-card';
 
 const FeaturedProducts = [
   {
