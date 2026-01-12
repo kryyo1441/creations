@@ -1,5 +1,13 @@
+import Link from "next/link";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Badge } from "../ui/badge";
+import { ChevronDownIcon, ChevronUpIcon, StarIcon } from "lucide-react";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+
+
 interface Product {
-    if: number;
+    id: number;
     name:string;
     description:string;
     tags:string[];
@@ -10,9 +18,47 @@ interface Product {
 
 
 export default function ProductCard({ product }: { product: Product }) {
+    const hasVoted = false;
+    
+    
     return(
         <>
-        <div>{product.name}</div>
+        <Link href={`/products/${product.id}`}>
+            <Card className="group card-hover hover:bg-primary-foreground/10 border-solid border-gray-400 min-h-[180px] ml-5 mr-5">
+                <CardHeader className="flex-1 ">
+                    <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                            <div className="flex item-center gap-2">
+                                <CardTitle className="text-lg group-hover:text-primary transition-colors">{product.name}</CardTitle>
+                                {product.isFeatured && <Badge className="gap-1 bg-primary text-primary-foreground"><StarIcon className="size-3 fill-current"/>Featured</Badge>} 
+                            </div>
+                            <CardDescription>{product.description}</CardDescription>
+                        </div> 
+                        {/* Voting shit */}
+                        <div className="flex flex-col items-center gap-1 shrink-0">
+                            <Button variant="ghost" size="icon-sm" className={cn("h-8 w-8 text-primary hover:bg-primary/20", hasVoted ? "bg-primary/10 text-primary  hover:bg-primary/20" : "hover:bg-primary/10 hover:text-primary")}>
+                                <ChevronUpIcon className="size-8"></ChevronUpIcon>
+                            </Button>
+                            <span className="text-sm font-semibold transition-colours text-foreground">10</span>
+                            <Button variant="ghost" size="icon-sm" className={cn("h-8 w-8 text-primary", hasVoted ? "hover:text-destructive" : "opacity-50 cursor-not-allowed")}>
+                                <ChevronDownIcon className="size-8"></ChevronDownIcon>
+                            </Button>
+                        </div>
+
+
+                    </div>
+                    
+                </CardHeader>
+                <CardFooter>
+                    <div className="flex items-center gap-2">
+                        {product.tags.map((tag) => (
+                        <Badge variant="secondary" key={tag}>{tag}</Badge>
+                        ))}
+                    </div>
+                    </CardFooter>
+                
+            </Card>
+        </Link>
 
         </>
     )
