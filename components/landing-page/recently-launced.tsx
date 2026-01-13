@@ -1,6 +1,7 @@
 import { RocketIcon, Section } from "lucide-react";
 import SectionHeader from "../common/section-header";
 import ProductCard from "../products/product-card";
+import EmptyState from "../common/empty-state";
 
 export default function RecentlyLaunchedProducts() {
     const recentlyLauncedCreations = [
@@ -46,10 +47,15 @@ export default function RecentlyLaunchedProducts() {
                         icon={RocketIcon}
                         description="Discover Latest Creations"
                     />
-                    <div className="grid-wrapper">
-                              {recentlyLauncedCreations.map((product) => 
-                              <ProductCard key={product.id} product={product}/>)}
-                    </div>
+                    
+                              {recentlyLauncedCreations.length > 0 ? (
+                                <div className="grid-wrapper">
+                                  {recentlyLauncedCreations.map((product) => 
+                                    <ProductCard key={product.id} product={product}/>)}
+                                </div>
+                              ) : (
+                                <EmptyState />
+                              )}
                 </div>
             </section>
         </>
