@@ -1,4 +1,4 @@
-import { HandMetal, HomeIcon, Rocket } from "lucide-react"
+import { HandMetal, HomeIcon, Rocket, SparklesIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
 
@@ -17,6 +17,7 @@ const Logo = () => {
 }
 
 export default function Header(){
+    const isSignedin = false;
     return(
         <header className="sticky top-0 z-50 border-b border-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
             <div className="wrapper px-12 ">
@@ -32,10 +33,20 @@ export default function Header(){
                         <span>Explore</span>
                     </Link>
                     <div className="flex items-center gap-4">
-                        <Button asChild>
-                            <Link href="/submit"></Link>
+                        {isSignedin ? (<Button asChild>
+                            <Link href="/submit">
+                                <SparklesIcon className="size-4"/>
+                                <span>Submit Creation</span>
+            
+                            </Link>
                         </Button>
-                        <Button></Button>
+                            
+                    ) : (
+                            <>
+                        <Button variant="ghost">Sign in</Button>
+                        <Button>Sign up</Button>
+                            </>
+                        )}
                     </div>
                 </nav>
                 </div>
