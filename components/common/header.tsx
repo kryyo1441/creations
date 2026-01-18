@@ -1,6 +1,7 @@
 import { HandMetal, HomeIcon, Rocket, SparklesIcon, UserIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
+import { SignIn, SignUp } from "@clerk/nextjs"
 
 
 const Logo = () => {
@@ -17,7 +18,7 @@ const Logo = () => {
 }
 
 export default function Header(){
-    const isSignedin = true;
+    const isSignedin = false;
     return(
         <header className="sticky top-0 z-50 border-b border-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
             <div className="wrapper px-12 ">
@@ -45,7 +46,8 @@ export default function Header(){
                             </>
                         ) : (
                             <>
-                                <Button variant="ghost">Sign in</Button>
+                                <SignIn/>
+                                <SignUp/>
                                 <Button>Sign up</Button>
                             </>
                         )}
