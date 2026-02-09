@@ -6,15 +6,6 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
 
-interface Product {
-    id: number;
-    name:string;
-    description:string;
-    tags:string[];
-    votes:number;
-    isFeatured:boolean;
-}
-
 
 
 export default function ProductCard({ product }: { product: Product }) {
