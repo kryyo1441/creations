@@ -13,3 +13,19 @@ export async function getTrendingProducts() {
 
     return productsData;
 }
+
+export async function getRecentlyLaunchedProducts() {
+    const productsData = await getTrendingProducts();
+    const OneWeekAgo = new Date();
+    OneWeekAgo.setDate(OneWeekAgo.getDate() - 7);
+
+    return productsData.filter(
+        (product) =>
+            product.createdAt && new Date(product.createdAt) >=OneWeekAgo 
+    
+    )
+
+    
+
+    return productsData;
+}
