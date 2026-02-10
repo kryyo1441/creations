@@ -1,11 +1,15 @@
 import { db } from "@/db";
 import { products } from "@/db/schema";
+import { desc, eq } from "drizzle-orm";
 
 export async function getTrendingProducts() {
-    const productsData = await db.select().from
-    (products);
+    const productsData = await db
+        .select()
+        .from(products)
+        .where(eq(products.status, "approved"))
+        .orderBy(desc(products.voteCount));
 
-    console.log("Products data:", productsData);
+    
 
     return productsData;
 }
